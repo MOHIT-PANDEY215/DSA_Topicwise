@@ -56,21 +56,25 @@ void add_after_node(Node *prev_node,int new_data){
         return;
     }
     Node * new_node= new Node(new_data);
-    new_node -> data =new_data;
+    
     new_node -> next =prev_node -> next;
     prev_node->next=new_node;
 }
 
-void add_at_index(Node *ref, int new_data, int index){
+void add_at_index(Node *&ref, int new_data, int index){
+    if(index==1){
+        add_at_front(ref,new_data);
+        return;
+    }
     Node *new_node =new Node(new_data);
     Node *new_ref =ref;
 
-    int i=0;
+    int i=1;
     while(i!=index-1){
         new_ref=new_ref->next;
         i++;
     }
-    new_node->data=new_data;
+
     new_node->next=new_ref->next;
     new_ref->next=new_node;
 }
@@ -97,7 +101,7 @@ int main(){
     add_after_node(head->next,4);
     // 7->1->4->5->10->NULL;
     add_at_index(head,8,2);
-    // 7->1->8->4->5->10->NULL;
+    // 7->8->1->4->5->10->NULL;
     print(head);
     return 0;
 }

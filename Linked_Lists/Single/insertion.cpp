@@ -66,7 +66,7 @@ void add_at_index(Node *ref, int new_data, int index){
     Node *new_node =new Node();
     Node *new_ref =ref;
 
-    int i=0;
+    int i=1;
     while(i!=index-1){
         new_ref=new_ref->next;
         i++;
@@ -97,7 +97,7 @@ int main(){
     add_after_node(head->next,4);
     // 7->5->4->10->NULL;
     add_at_index(head,8,2);
-    // 7->5->8->4->10->NULL;
+    // 7->8->5->4->10->NULL;
     print(head);
     return 0;
 }
